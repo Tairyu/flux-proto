@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function (grunt) {
+    require('jit-grunt')(grunt);
+
     grunt.initConfig({
         clean: ['build'],
         concurrent: {
@@ -54,13 +56,6 @@ module.exports = function (grunt) {
             }
         }
     });
-
-    // libs
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-nodemon');
-    grunt.loadNpmTasks('grunt-webpack');
 
     // tasks
     grunt.registerTask('default', ['clean', 'jshint', 'concurrent:dev']);
