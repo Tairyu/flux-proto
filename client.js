@@ -17,15 +17,15 @@ window.fluxibleDebug = debug;
 debugClient('rehydrating app');
 
 // pass in the dehydrated server state from server.js
-app.rehydrate(dehydratedState, function (err, context) {
-    if (err) {
-        throw err;
-    }
-    window.context = context;
-    var mountNode = document.getElementById('app');
+app.rehydrate(dehydratedState, function(err, context) {
+  if (err) {
+    throw err;
+  }
+  window.context = context;
+  var mountNode = document.getElementById('app');
 
-    debugClient('React Rendering');
-    React.render(context.createElement(), mountNode, function () {
-        debugClient('React Rendered');
-    });
+  debugClient('React Rendering');
+  React.render(context.createElement(), mountNode, function() {
+    debugClient('React Rendered');
+  });
 });

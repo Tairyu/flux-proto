@@ -21,37 +21,37 @@ var server = express();
 server.set('state namespace', 'App');
 server.use('/public', express.static(__dirname + '/build'));
 
-server.use(function (req, res, next) {
-    var context = app.createContext();
+server.use(function(req, res, next) {
+  var context = app.createContext();
 
-    debug('Executing navigate action');
-    context.getActionContext().executeAction(navigateAction, {
-        url: req.url
-    }, function (err) {
-        if (err) {
-            if (err.status && err.status === 404) {
-                next();
-            } else {
-                next(err);
-            }
-            return;
-        }
+  debug('Executing navigate action');
+  context.getActionContext().executeAction(navigateAction, {
+    url: req.url
+  }, function(err) {
+    if (err) {
+      if (err.status && err.status === 404) {
+        next();
+      } else {
+        next(err);
+      }
+      return;
+    }
 
-        debug('Exposing context state');
-        var exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
+    debug('Exposing context state');
+    var exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
 
-        debug('Rendering Application component into html');
-        var html = React.renderToStaticMarkup(htmlComponent({
-            context: context.getComponentContext(),
-            state: exposed,
-            markup: React.renderToString(context.createElement())
-        }));
+    debug('Rendering Application component into html');
+    var html = React.renderToStaticMarkup(htmlComponent({
+      context: context.getComponentContext(),
+      state: exposed,
+      markup: React.renderToString(context.createElement())
+    }));
 
-        debug('Sending markup');
-        res.type('html');
-        res.write('<!DOCTYPE html>' + html);
-        res.end();
-    });
+    debug('Sending markup');
+    res.type('html');
+    res.write('<!DOCTYPE html>' + html);
+    res.end();
+  });
 });
 
 var port = process.env.PORT || 3000;
