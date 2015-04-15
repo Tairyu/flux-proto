@@ -44,6 +44,8 @@
     "quotes": 0,
     "semi": 0,
     "space-infix-ops": 0,
-    "space-return-throw-case": 0
+    "space-return-throw-case": 0,
+
+    "no-var": 1
   }
 }
