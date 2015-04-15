@@ -1,0 +1,7 @@
+{
+  "esprima": "esprima-fb",
+  "esnext": true,
+  "preset": "grunt",
+
+  "disallowKeywordsOnNewLine": null
+}
