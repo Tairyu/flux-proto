@@ -3,6 +3,7 @@ const React = require('react');
 const Nav = require('./Nav.jsx');
 const Home = require('./Home.jsx');
 const About = require('./About.jsx');
+const HairLength = require('./HairLength.jsx');
 const ApplicationStore = require('../stores/ApplicationStore');
 const RouterMixin = require('flux-router-component').RouterMixin;
 const FluxibleMixin = require('fluxible').FluxibleMixin;
@@ -41,6 +42,7 @@ const Application = React.createClass({
       <div>
         <Nav selected={this.state.currentPageName} links={this.state.pages} />
         {output}
+        <HairLength />
       </div>
     );
   },

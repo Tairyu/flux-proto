@@ -21,6 +21,10 @@ const server = express();
 server.set('state namespace', 'App');
 server.use('/public', express.static(__dirname + '/build'));
 
+const fetchrPlugin = app.getPlugin('FetchrPlugin');
+fetchrPlugin.registerService(require('./services/hairLength'));
+server.use(fetchrPlugin.getXhrPath(), fetchrPlugin.getMiddleware());
+
 server.use(function(req, res, next) {
   const context = app.createContext();
 
