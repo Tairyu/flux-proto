@@ -1,8 +1,8 @@
 'use strict';
-var React = require('react');
-var NavLink = require('flux-router-component').NavLink;
+const React = require('react');
+const NavLink = require('flux-router-component').NavLink;
 
-var Nav = React.createClass({
+const Nav = React.createClass({
   getDefaultProps: function() {
     return {
       selected: 'home',
@@ -10,12 +10,12 @@ var Nav = React.createClass({
     };
   },
   render: function() {
-    var selected = this.props.selected;
-    var links = this.props.links;
+    const selected = this.props.selected;
+    const links = this.props.links;
 
-    var linkHTML = Object.keys(links).map(function(name) {
-      var className = '';
-      var link = links[name];
+    const linkHTML = Object.keys(links).map(function(name) {
+      let className = '';
+      const link = links[name];
 
       if (selected === name) {
         className = 'pure-menu-selected';

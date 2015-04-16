@@ -5,7 +5,7 @@ const Fluxible = require('fluxible');
 const routrPlugin = require('fluxible-plugin-routr');
 
 // create new fluxible instance
-let app = new Fluxible({
+const app = new Fluxible({
   component: React.createFactory(require('./components/Application.jsx'))
 });
 

@@ -1,13 +1,13 @@
 'use strict';
-var React = require('react');
-var Nav = require('./Nav.jsx');
-var Home = require('./Home.jsx');
-var About = require('./About.jsx');
-var ApplicationStore = require('../stores/ApplicationStore');
-var RouterMixin = require('flux-router-component').RouterMixin;
-var FluxibleMixin = require('fluxible').FluxibleMixin;
+const React = require('react');
+const Nav = require('./Nav.jsx');
+const Home = require('./Home.jsx');
+const About = require('./About.jsx');
+const ApplicationStore = require('../stores/ApplicationStore');
+const RouterMixin = require('flux-router-component').RouterMixin;
+const FluxibleMixin = require('fluxible').FluxibleMixin;
 
-var Application = React.createClass({
+const Application = React.createClass({
   mixins: [RouterMixin, FluxibleMixin],
   statics: {
     storeListeners: [ApplicationStore]
@@ -16,7 +16,7 @@ var Application = React.createClass({
     return this.getState();
   },
   getState: function() {
-    var appStore = this.getStore(ApplicationStore);
+    const appStore = this.getStore(ApplicationStore);
     return {
       currentPageName: appStore.getCurrentPageName(),
       pageTitle: appStore.getPageTitle(),
@@ -28,7 +28,7 @@ var Application = React.createClass({
     this.setState(this.getState());
   },
   render: function() {
-    var output = '';
+    let output = '';
     switch (this.state.currentPageName) {
       case 'home':
         output = <Home/>;
@@ -46,7 +46,7 @@ var Application = React.createClass({
   },
 
   componentDidUpdate: function(prevProps, prevState) {
-    var newState = this.state;
+    const newState = this.state;
     if (newState.pageTitle === prevState.pageTitle) {
       return;
     }

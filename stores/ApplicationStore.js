@@ -1,8 +1,8 @@
 'use strict';
-var createStore = require('fluxible/addons').createStore;
-var routesConfig = require('../configs/routes');
+const createStore = require('fluxible/addons').createStore;
+const routesConfig = require('../configs/routes');
 
-var ApplicationStore = createStore({
+const ApplicationStore = createStore({
   storeName: 'ApplicationStore',
   handlers: {
     'CHANGE_ROUTE_SUCCESS': 'handleNavigate'
@@ -19,8 +19,8 @@ var ApplicationStore = createStore({
       return;
     }
 
-    var pageName = route.config.page;
-    var page = this.pages[pageName];
+    const pageName = route.config.page;
+    const page = this.pages[pageName];
 
     this.currentPageName = pageName;
     this.currentPage = page;

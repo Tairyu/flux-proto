@@ -9,20 +9,20 @@
 
 require('babel/register');
 
-var express = require('express');
-var serialize = require('serialize-javascript');
-var navigateAction = require('flux-router-component').navigateAction;
-var debug = require('debug')('flux-proto');
-var React = require('react');
-var app = require('./app');
-var htmlComponent = React.createFactory(require('./components/Html.jsx'));
+const express = require('express');
+const serialize = require('serialize-javascript');
+const navigateAction = require('flux-router-component').navigateAction;
+const debug = require('debug')('flux-proto');
+const React = require('react');
+const app = require('./app');
+const htmlComponent = React.createFactory(require('./components/Html.jsx'));
 
-var server = express();
+const server = express();
 server.set('state namespace', 'App');
 server.use('/public', express.static(__dirname + '/build'));
 
 server.use(function(req, res, next) {
-  var context = app.createContext();
+  const context = app.createContext();
 
   debug('Executing navigate action');
   context.getActionContext().executeAction(navigateAction, {
@@ -38,10 +38,10 @@ server.use(function(req, res, next) {
     }
 
     debug('Exposing context state');
-    var exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
+    const exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
 
     debug('Rendering Application component into html');
-    var html = React.renderToStaticMarkup(htmlComponent({
+    const html = React.renderToStaticMarkup(htmlComponent({
       context: context.getComponentContext(),
       state: exposed,
       markup: React.renderToString(context.createElement())
@@ -54,6 +54,6 @@ server.use(function(req, res, next) {
   });
 });
 
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 server.listen(port);
 console.log('Listening on port ' + port);

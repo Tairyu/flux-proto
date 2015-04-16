@@ -1,7 +1,7 @@
 'use strict';
-var React = require('react');
+const React = require('react');
 
-var About = React.createClass({
+const About = React.createClass({
   getInitialState: function() {
     return {};
   },

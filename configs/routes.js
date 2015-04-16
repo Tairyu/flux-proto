@@ -1,6 +1,6 @@
 'use strict';
 
-var loadPage = require('../actions/loadPage');
+const loadPage = require('../actions/loadPage');
 
 module.exports = {
   home: {

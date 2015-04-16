@@ -1,9 +1,9 @@
 'use strict';
-var React = require('react');
-var ApplicationStore = require('../stores/ApplicationStore');
-var FluxibleMixin = require('fluxible').FluxibleMixin;
+const React = require('react');
+const ApplicationStore = require('../stores/ApplicationStore');
+const FluxibleMixin = require('fluxible').FluxibleMixin;
 
-var Html = React.createClass({
+const Html = React.createClass({
   mixins: [FluxibleMixin],
   render: function() {
     return (

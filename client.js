@@ -2,11 +2,11 @@
 
 'use strict';
 
-var React = require('react');
-var debug = require('debug');
-var debugClient = debug('flux-proto');
-var app = require('./app');
-var dehydratedState = window.App; // Sent from the server
+const React = require('react');
+const debug = require('debug');
+const debugClient = debug('flux-proto');
+const app = require('./app');
+const dehydratedState = window.App; // Sent from the server
 
 window.React = React; // For chrome dev tool support
 
@@ -22,7 +22,7 @@ app.rehydrate(dehydratedState, function(err, context) {
     throw err;
   }
   window.context = context;
-  var mountNode = document.getElementById('app');
+  const mountNode = document.getElementById('app');
 
   debugClient('React Rendering');
   React.render(context.createElement(), mountNode, function() {
