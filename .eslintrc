@@ -23,9 +23,7 @@
     "no-alert": 0,
     "no-floating-decimal": 2,
 
-
-    "no-extra-strict": 0,
-    "strict": 0,
+    "strict": 2,
 
     "no-unused-vars": 0,
 
